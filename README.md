@@ -1,110 +1,48 @@
-# NEET Rank Prediction 🎯
+# 📊 NEET Rank Predictor 🎓
 
-## Table of Contents 📚
-
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Project Structure](#project-structure)
-6. [Data Description](#data-description)
-7. [Model and Prediction Pipeline](#model-and-prediction-pipeline)
-8. [Visualization](#visualization)
-9. [Dependencies](#dependencies)
-10. [Contributing](#contributing)
-11. [License](#license)
-12. [Script Explanation](#script-explanation)
+Welcome to the **NEET Rank Predictor**! This project is designed to predict a student's NEET rank based on their quiz performance and suggest the most likely college they could get into. Whether you're a student preparing for the exam or an educator analyzing performance trends, this tool provides accurate and insightful predictions. 🏥
 
 ---
 
-## Project Overview 🌟
+## 🌟 Features
 
-The **NEET Rank Prediction** project is designed to predict the ranks of candidates appearing for the NEET (National Eligibility cum Entrance Test) based on their performance metrics. Using historical performance data, this system provides insights into rank predictions, enabling candidates to analyze their potential outcomes and strategize accordingly.
-
-This project leverages advanced machine learning techniques to ensure accuracy and reliability. It also provides visualizations for better understanding and analysis.
-
----
-
-## Features ✨
-
-- **Rank Prediction**: Predict NEET ranks based on accuracy, weighted scores, and other metrics.
-- **Model Training**: Uses advanced machine learning models with hyperparameter tuning for optimal performance.
-- **Data Visualization**: Generates insightful plots to visualize trends and accuracy.
-- **Customizable Inputs**: Accepts custom inputs for predictions.
+- **Rank Prediction**: Predicts NEET rank using quiz performance data. 📈
+- **College Suggestion**: Recommends colleges based on predicted rank. 🏫
+- **Visual Insights**: Generates visualizations for topic-wise accuracy and performance trends. 📊
+- **Flask API**: Exposes predictions via a REST API for easy integration. 🌐
+- **Mock Data Support**: Automatically generates mock data for testing when real data is insufficient. 🛠️
 
 ---
 
-## Installation 🛠️
+## 🛠️ Setup Instructions
 
-### Prerequisites
+### 1. Clone the Repository
 
-Ensure you have Python 3.13.2 or later installed.
-
-### Steps
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/neet-rank-prediction.git
-   cd neet-rank-prediction
-   ```
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Set up the directory structure:
-   ```bash
-   mkdir -p visualizations
-   ```
-4. Run the script:
-   ```bash
-   python scripts/main_pipeline.py
-   ```
-
----
-
-## Usage 🚀
-
-1. **Run the Main Pipeline**:
-   Execute the following command:
-   ```bash
-   python scripts/main_pipeline.py
-   ```
-   The script will process the data, train the model, and output predictions and visualizations.
-
-2. **Input Custom Data**:
-   Modify the input data in `data/input_data.json` and rerun the script.
-
-3. **Check Outputs**:
-   - Predictions will be printed to the console.
-   - Visualizations will be saved in the `visualizations` directory.
-
----
-
-## Project Structure 🗂️
-
-```
-neet-rank-prediction/
-|-- data/
-|   |-- input_data.json          # Input data for predictions
-|-- scripts/
-|   |-- main_pipeline.py         # Main script for processing and predictions
-|-- visualizations/              # Directory for saving plots
-|-- requirements.txt             # Dependencies
-|-- README.md                    # Project documentation
+```bash
+git clone https://github.com/your-username/neet-rank-predictor.git
+cd neet-rank-predictor
 ```
 
----
+### 2. Install Dependencies
 
-## Data Description 📊
+Ensure Python 3.13.2 or later is installed. Then, install the required libraries:
 
-### Input Metrics
-- **Accuracy**: Overall percentage of correct answers.
-- **Weighted Score**: Score calculated based on the NEET marking scheme.
-- **Total Questions**: Total number of questions attempted.
-- **Correct-to-Incorrect Ratio**: Ratio of correct answers to incorrect answers.
-- **Time Per Question**: Average time spent on each question.
+```bash
+pip install -r requirements.txt
+```
 
-### Example Input
+### 3. Run the Application
+
+Start the Flask server by running the main script:
+
+```bash
+python scripts/main_pipeline.py
+```
+
+### 4. Access the API
+
+The Flask API will start at `http://127.0.0.1:5000`. You can send a POST request to `http://127.0.0.1:5000/predict` with the following JSON body:
+
 ```json
 {
   "accuracy": 95,
@@ -117,56 +55,85 @@ neet-rank-prediction/
 
 ---
 
-## Model and Prediction Pipeline 🔍
+## 🧠 How It Works
 
-1. **Data Preprocessing**:
-   - Combine and clean datasets.
-   - Handle missing values and outliers.
+### Data Pipeline 🚀
 
-2. **Model Training**:
-   - Use XGBoost for regression tasks.
-   - Perform hyperparameter tuning with grid search.
+1. **Data Loading**:
+   - Loads data from three JSON files:
+     - `Quiz_Endpoint.json`: Contains quiz details.
+     - `Quiz_Submission_Data.json`: Contains user quiz submissions.
+     - `API_Endpoint.json`: Contains historical quiz data and NEET ranks.
 
-3. **Prediction**:
-   - Generate predictions for NEET ranks.
+2. **Data Merging**:
+   - Merges datasets using `quiz_id` and `user_id` to create a combined dataset.
 
-4. **Evaluation**:
-   - Calculate Mean Squared Error (MSE) to evaluate model performance.
+3. **Feature Engineering**:
+   - Creates new features, such as:
+     - `weighted_score`: Combines score and difficulty level.
+     - `correct_to_incorrect_ratio`: Measures the ratio of correct to incorrect answers.
+     - `time_per_question`: Calculates the average time taken per question.
+
+4. **Model Training**:
+   - Trains a Gradient Boosting Regressor on the dataset to predict NEET ranks.
+   - Optimizes model performance using GridSearchCV.
+
+5. **Flask API**:
+   - Exposes the trained model via a REST API for easy access and predictions.
 
 ---
 
-## Visualization 📈
+## 📊 Visualizations
 
-The script generates plots to provide better insights into the data. Example plots include:
+The script generates insightful visualizations to analyze performance trends. Example visualizations include:
 
-- **Accuracy Trends**: Visual representation of candidate accuracy.
-- **Score Distributions**: Insights into the weighted scores.
+- **Topic Accuracy**: Bar chart showing accuracy by topic (`topic_accuracy.png`).
+- **Score Trends**: Line charts visualizing weighted score distributions.
 
-Visualizations are saved in the `visualizations/` directory, e.g., `visualizations/topic_accuracy.png`.
+All visualizations are saved in the `visualizations/` folder.
 
 ---
 
-## Dependencies 📦
+## 🚀 Example API Response
 
-The project relies on the following Python libraries:
+Here’s an example of what the API might return:
 
-- **NumPy**
-- **Pandas**
-- **Scikit-Learn**
-- **XGBoost**
-- **Matplotlib**
-- **Seaborn**
-
-Install these dependencies via:
-```bash
-pip install -r requirements.txt
+```json
+{
+  "predicted_rank": 23718.22,
+  "predicted_college": "Other Colleges"
+}
 ```
 
 ---
 
-## Contributing 🤝
+## 🛠️ Troubleshooting
 
-Contributions are welcome! To contribute:
+### Common Issues
+
+- **Insufficient Data**:
+  - If the merged dataset has insufficient data, the script will automatically generate mock data for testing.
+
+- **Missing Columns**:
+  - If required columns (e.g., `topic`, `difficulty_level`) are missing, the script will skip related analyses and use default values.
+
+- **Visualization Errors**:
+  - If the `visualizations/` directory does not exist, the script will create it automatically.
+
+---
+
+## 🎁 Bonus Features
+
+- **Input Validation**: Ensures inputs are within valid ranges (e.g., `accuracy` must be between 0 and 100).
+- **Mock Data**: Automatically generates data for testing when real data is insufficient.
+- **Hyperparameter Tuning**: Optimizes model performance using GridSearchCV.
+
+---
+
+## 🤝 Contributing
+
+Contributions are always welcome! To contribute:
+
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
 3. Commit your changes and push them to your fork.
@@ -174,9 +141,19 @@ Contributions are welcome! To contribute:
 
 ---
 
-## License 📜
+## 📜 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+Special thanks to the NEET Testline app for inspiring this project and to the open-source community for tools like Pandas, Scikit-learn, and Flask.
+
+Enjoy using the **NEET Rank Predictor**! Let us know if you have any questions or suggestions. 🚀
+
+
 
 ---
 
