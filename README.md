@@ -1,6 +1,6 @@
-# NEET Rank Prediction
+# NEET Rank Prediction 🎯
 
-## Table of Contents
+## Table of Contents 📚
 
 1. [Project Overview](#project-overview)
 2. [Features](#features)
@@ -16,7 +16,7 @@
 
 ---
 
-## Project Overview
+## Project Overview 🌟
 
 The **NEET Rank Prediction** project is designed to predict the ranks of candidates appearing for the NEET (National Eligibility cum Entrance Test) based on their performance metrics. Using historical performance data, this system provides insights into rank predictions, enabling candidates to analyze their potential outcomes and strategize accordingly.
 
@@ -24,7 +24,7 @@ This project leverages advanced machine learning techniques to ensure accuracy a
 
 ---
 
-## Features
+## Features ✨
 
 - **Rank Prediction**: Predict NEET ranks based on accuracy, weighted scores, and other metrics.
 - **Model Training**: Uses advanced machine learning models with hyperparameter tuning for optimal performance.
@@ -33,7 +33,7 @@ This project leverages advanced machine learning techniques to ensure accuracy a
 
 ---
 
-## Installation
+## Installation 🛠️
 
 ### Prerequisites
 
@@ -61,7 +61,7 @@ Ensure you have Python 3.13.2 or later installed.
 
 ---
 
-## Usage
+## Usage 🚀
 
 1. **Run the Main Pipeline**:
    Execute the following command:
@@ -79,7 +79,7 @@ Ensure you have Python 3.13.2 or later installed.
 
 ---
 
-## Project Structure
+## Project Structure 🗂️
 
 ```
 neet-rank-prediction/
@@ -94,7 +94,7 @@ neet-rank-prediction/
 
 ---
 
-## Data Description
+## Data Description 📊
 
 ### Input Metrics
 - **Accuracy**: Overall percentage of correct answers.
@@ -116,7 +116,7 @@ neet-rank-prediction/
 
 ---
 
-## Model and Prediction Pipeline
+## Model and Prediction Pipeline 🔍
 
 1. **Data Preprocessing**:
    - Combine and clean datasets.
@@ -134,7 +134,7 @@ neet-rank-prediction/
 
 ---
 
-## Visualization
+## Visualization 📈
 
 The script generates plots to provide better insights into the data. Example plots include:
 
@@ -145,7 +145,7 @@ Visualizations are saved in the `visualizations/` directory, e.g., `visualizatio
 
 ---
 
-## Dependencies
+## Dependencies 📦
 
 The project relies on the following Python libraries:
 
@@ -163,7 +163,7 @@ pip install -r requirements.txt
 
 ---
 
-## Contributing
+## Contributing 🤝
 
 Contributions are welcome! To contribute:
 1. Fork the repository.
@@ -173,7 +173,6 @@ Contributions are welcome! To contribute:
 
 ---
 
-## License
+## License 📜
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
